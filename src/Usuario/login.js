@@ -1,39 +1,63 @@
 import React, { useState, useEffect } from "react";
 import { View, Text, TextInput, TouchableOpacity, KeyboardAvoidingView, StyleSheet, Platform } from 'react-native'
 import { MaterialCommunityIcons } from "@expo/vector-icons";
+import { auth } from '../Config/firebase'
 
-// import firebase from './Config/firebase'
 
-export default function Login({ navigation }){
+export default function Login({ navigation }) {
     const [email, setEmail] = useState("")
     const [senha, setSenha] = useState("")
     const [errorLogin, setErrorLogin] = useState("")
 
-    const loginFirebase = () => {
+    
 
-    }
     useEffect(() => {
+        const unsubscribe = auth.onAuthStateChanged(user => {
+            if (user) {
+                navigation.navigate("Agendamento")
+            }
+        })
 
+        return unsubscribe
     }, [])
 
+    const loginFirebase = () => {
+        auth
+        .signInWithEmailAndPassword(email, senha)
+        .then((userCredential) => {
+          const user = userCredential.user;
+          console.log(user.email)
+          navigation.navigate("Home")
+        })
+        .catch((error) => {
+          setErrorLogin(true)
+          let errorCode = error.code;
+          let errorMessage = error.message;
+          // ..
+        });
+    }
+
+    
     return (
         <KeyboardAvoidingView 
         behavior={Platform.OS === "ios" ? "padding" : "height"}
         style={styles.container}
         >
-            <Text style={styles.title}>Task</Text>
+            <Text style={styles.title}>Login</Text>
+
             <TextInput
             style={styles.input}
-            placeholder='enter your email'
+            placeholder='digite seu email'
             type="text"
-            onChangeText={(text) => setEmail(text)}
+            onChangeText={text => setEmail(text)}
             value={email}/>
+
             <TextInput
             style={styles.input}
             secureTextEntry={true}
-            placeholder='enter a password'
+            placeholder='digite sua senha'
             type="text"
-            onChangeText={(text) => setSenha(text)}
+            onChangeText={text => setSenha(text)}
             value={senha}/>
 
             
@@ -61,22 +85,23 @@ export default function Login({ navigation }){
             :
             <TouchableOpacity
                style={styles.buttonLogin}
+               onPress={loginFirebase}
             >
                 <Text style={styles.textButtonLogin}>Login</Text>
             </TouchableOpacity>
             }
 
             <Text style={styles.registration}>
-                don't have a registration?
+                você não tem cadastro?
                 <Text
                     style={styles.linkSubscribe}
                     onPress={() => navigation.navigate('cadastro')}
                 >
-                    subscribe now...
+                    cadastrar...
                 </Text>
             </Text>
 
-            <View style={{height: 100}}/>
+            <View style={{height: 10}}/>
         </KeyboardAvoidingView>
     );
 }
@@ -84,13 +109,13 @@ export default function Login({ navigation }){
 const styles = StyleSheet.create ({
     container: {
         flex: 1,
-        backgroundColor: '#fff',
+        backgroundColor: '#FFCD1D',
         justifyContent: 'center',
         alignItems: 'center'
     },
     title: {
         fontSize: 48,
-        color: '#f92e6a',
+        color: '#FF9839',
         marginBottom: 10,
         fontWeight: 'bold'
     },
@@ -100,7 +125,7 @@ const styles = StyleSheet.create ({
         padding: 10,
         height: 50,
         borderBottomWidth: 1,
-        borderBottomColor:'#f92e6a',
+        borderBottomColor:'#FF9839',
         marginRight: 'auto',
         marginLeft: 'auto',
     },
@@ -109,7 +134,7 @@ const styles = StyleSheet.create ({
         height: 50,
         justifyContent: 'center',
         alignItems: 'center',
-        backgroundColor: '#f92e6a',
+        backgroundColor: '#FF9839',
         borderRadius: 50,
         marginTop: 30,
     },
