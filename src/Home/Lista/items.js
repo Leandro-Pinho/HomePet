@@ -1,38 +1,87 @@
-const images = [
-    {
-      key: 1,
-      name: "Nathan Anderson",
-      uri: {uri: 'https://res.cloudinary.com/donglyhya/image/upload/v1516817597/campaign1_byvldn.png'},
-      url: "https://unsplash.com/photos/C9t94JC4_L8"
-    },
-    {
-      key: 2,
-      name: "Jamison McAndie",
-      uri: {uri: 'https://res.cloudinary.com/donglyhya/image/upload/v1516817597/campaign2_hfbowa.png'},
-      url: "https://unsplash.com/photos/waZEHLRP98s"
-    },
-    {
-      key: 3,
-      name: "Alberto Restifo",
-      uri: {uri: 'https://res.cloudinary.com/donglyhya/image/upload/v1516817597/campaign3_utrh6j.jpg'},
-      url: "https://unsplash.com/photos/cFplR9ZGnAk"
-    },
-    {
-      key: 4,
-      name: "John Towner",
-      uri: {uri: 'https://res.cloudinary.com/donglyhya/image/upload/v1516817597/campaign4_wlc7p1.jpg'},
-      url: "https://unsplash.com/photos/89PFnHKg8HE"
-    },
-    {
-      key: 5,
-      name: "John Towner",
-      uri: {uri: 'https://res.cloudinary.com/donglyhya/image/upload/v1516817882/campaign5_wudgxu.jpg'},
-      url: "https://unsplash.com/photos/89PFnHKg8HE"
-    },
-    {
-      key: 6,
-      name: "John Towner",
-      uri: {uri: 'https://res.cloudinary.com/donglyhya/image/upload/v1516817597/campaign6_lfiwwo.jpg'},
-      url: "https://unsplash.com/photos/89PFnHKg8HE"
-    },
-  ];
+const pets = [
+  {
+    pet: 'cats',
+    pets: [
+      {
+        id: '1',
+        name: 'Lily',
+        image: require('./assets/cat1.png'),
+        type: 'Chausie',
+        age: '5 years old',
+      },
+      {
+        id: '2',
+        name: 'Lucy',
+        image: require('./assets/cat2.png'),
+        type: 'Bobtail',
+        age: '2 years old',
+      },
+      {
+        id: '3',
+        name: 'Nala',
+        image: require('./assets/cat3.png'),
+        type: 'Ragamuffin',
+        age: '2 years old',
+      },
+    ],
+  },
+  {
+    pet: 'dogs',
+    pets: [
+      {
+        id: '1',
+        name: 'Bally',
+        image: require('./assets/dog1.png'),
+        type: 'German Shepherd',
+        age: '2 years old',
+      },
+      {
+        id: '2',
+        name: 'Max',
+        image: require('./assets/dog2.png'),
+        type: 'Foxhound',
+        age: '2 years old',
+      },
+    ],
+  },
+  {
+    pet: 'birds',
+    pets: [
+      {
+        id: '1',
+        name: 'Coco',
+        image: require('./assets/bird1.png'),
+        type: 'Parrot',
+        age: '2 years old',
+      },
+      {
+        id: '2',
+        name: 'Alfie',
+        image: require('./assets/bird2.png'),
+        type: 'Parrot',
+        age: '4 years old',
+      },
+    ],
+  },
+  {
+    pet: 'bunnies',
+    pets: [
+      {
+        id: '1',
+        name: 'Boots',
+        image: require('./assets/bunny1.png'),
+        type: 'Angora',
+        age: '1 years old',
+      },
+      {
+        id: '2',
+        name: 'Pookie',
+        image: require('./assets/bunny2.png'),
+        type: 'Angora',
+        age: '1 years old',
+      },
+    ],
+  },
+];
+
+export default pets;
