@@ -4,7 +4,7 @@ import { NavigationContainer } from '@react-navigation/native';
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
 
 
-function SettingsScreen() {
+function DetailsScreen() {
   return (
     <View style={{ flex: 1, justifyContent: 'center', alignItems: 'center' }}>
       <Text>Settings!</Text>
@@ -12,4 +12,4 @@ function SettingsScreen() {
   );
 }
 
-export default SettingsScreen;
+export default DetailsScreen;

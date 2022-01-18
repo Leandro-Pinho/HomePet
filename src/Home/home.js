@@ -1,25 +1,26 @@
 import React from 'react';
 import { ScrollView, StyleSheet, View, Text, FlatList, TouchableOpacity, Dimensions, SafeAreaView, TextInput, Image } from 'react-native';
-import Header from './header';
-import { auth } from '../Config/firebase'
 import { MaterialCommunityIcons } from '@expo/vector-icons';
 const { height } = Dimensions.get('window');
 import COLORS from './Lista/colors';
 import pets from './Lista/items';
 
+
+
 const petCategories = [
+  {name: 'ANIMAIS', MaterialCommunityIcons: 'home-heart'},
   {name: 'CATS', MaterialCommunityIcons: 'cat'},
   {name: 'DOGS', MaterialCommunityIcons: 'dog'},
-  {name: 'BIRDS', MaterialCommunityIcons: 'ladybug'},
+  {name: 'BIRDS', MaterialCommunityIcons: 'language-swift'},
   {name: 'BUNNIES', MaterialCommunityIcons: 'rabbit'},
-  
 ];
+
 
 const Card = ({pet, navigation}) => {
   return (
     <TouchableOpacity
       activeOpacity={0.8}
-      onPress={() => navigation.navigate('DetailsScreen', pet)}>
+      onPress={() => navigation.navigate('Details', pet)}>
       <View style={styles.cardContainer}>
         {/* Render the card image */}
         <View style={styles.cardImageContainer}>
@@ -85,7 +86,7 @@ function HomeScreen({ navigation }) {
       <View style={styles.container}>
         <Text style={{color: COLORS.primary, fontWeight: 'bold', fontSize: 16}}>HOMEPETS</Text>
       </View>
-      <ScrollView showsVerticalScrollIndicator={false}>
+      <ScrollView showsHorizontalScrollIndicator={true}>
         <View style={styles.mainContainer}>
           <View style={styles.searchInputContainer}>
             <MaterialCommunityIcons name="magnify" size={24} color={COLORS.grey} />
